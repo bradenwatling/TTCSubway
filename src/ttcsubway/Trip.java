@@ -21,13 +21,21 @@ public class Trip {
         if (start != null && destination != null) {
             this.requiresTransfer = destination.requiresTransfer;
             this.isAccessible = start.isAccessible && destination.isAccessible;
-            
+
             path = findBestPath(start, destination, needAccessible);
         }
     }
 
     private ArrayList<Station> findBestPath(Station start, Station target, boolean needAccessible) {
         recursiveSearch(null, start, target, true, true);
+
+        /*for (ArrayList<Station> potentialPath : allPaths) {
+            for (Station station : potentialPath) {
+                System.out.println(station.line.name + ": " + station.name);
+            }
+            System.out.println("----------------------------");
+            System.out.println("----------------------------");
+        }*/
 
         ArrayList<Station> ret = null;
         int retSize = Integer.MAX_VALUE;
@@ -52,29 +60,6 @@ public class Trip {
         }
 
         return ret;
-    }
-
-    private boolean checkAccessible(ArrayList<Station> path) {
-        if (path.isEmpty()) {
-            //They sent us an empty path
-            return false;
-        } else {
-            Station lastStation = null;
-            //If we find a transfer station that is not accessible then we can't suggest this route
-            for (Station station : path) {
-                //If we're going through an interchange and one of the stations in that interchange is not accessible
-                if (station.isInterchange && station.equals(lastStation) && (!station.isAccessible || !lastStation.isAccessible)) {
-                    //Then this path is not accessible
-                    return false;
-                }
-                
-                //Record the last station
-                lastStation = station;
-            }
-
-            //If it passed all of these tests, then the path is accessible!
-            return true;
-        }
     }
 
     private void recursiveSearch(ArrayList<Station> currentPath, Station current, Station target, boolean searchLeft, boolean searchRight) {
@@ -122,15 +107,64 @@ public class Trip {
                 currentPath.add(current);
                 ArrayList<Station> branchPath = (ArrayList<Station>) currentPath.clone();
 
+
+                //If we're allowed to, search to the right
                 if (searchRight) {
-                    //If we're allowed to, search to the right
-                    recursiveSearch(currentPath, stations.get(currentIndex + 1), target, false, true);
+                    Station nextRight = stations.get(currentIndex + 1);
+
+                    //We're only going to allow the search if we can't find the next station's name in the current path
+                    //If we can, then we disallow the search if the station that was already visited is on the same line
+                    
+                    int previousIndex = currentPath.indexOf(nextRight);
+                    //If the next station is "found" in the current path (same name)
+                    //and if the station that has already been visited is on the same line as the next station
+                    boolean allowSearch = !(previousIndex > 0 && currentPath.get(previousIndex).line.equals(nextRight.line));
+
+                    if (allowSearch) {
+                        recursiveSearch(currentPath, nextRight, target, false, true);
+                    }
                 }
+
+                //If we're allowed to, search to the left
                 if (searchLeft) {
-                    //If we're allowed to, search to the left
-                    recursiveSearch(branchPath, stations.get(currentIndex - 1), target, true, false);
+                    Station nextLeft = stations.get(currentIndex - 1);
+
+                    //We're only going to allow the search if we can't find the next station's name in the current path
+                    //If we can, then we disallow the search if the station that was already visited is on the same line
+                    
+                    int previousIndex = currentPath.indexOf(nextLeft);
+                    //If the next station is "found" in the current path (same name)
+                    //and if the station that has already been visited is on the same line as the next station
+                    boolean allowSearch = !(previousIndex > 0 && currentPath.get(previousIndex).line.equals(nextLeft.line));
+
+                    if (allowSearch) {
+                        recursiveSearch(branchPath, nextLeft, target, true, false);
+                    }
                 }
             }
+        }
+    }
+
+    private boolean checkAccessible(ArrayList<Station> path) {
+        if (path.isEmpty()) {
+            //They sent us an empty path
+            return false;
+        } else {
+            Station lastStation = null;
+            //If we find a transfer station that is not accessible then we can't suggest this route
+            for (Station station : path) {
+                //If we're going through an interchange and one of the stations in that interchange is not accessible
+                if (station.isInterchange && station.equals(lastStation) && (!station.isAccessible || !lastStation.isAccessible)) {
+                    //Then this path is not accessible
+                    return false;
+                }
+
+                //Record the last station
+                lastStation = station;
+            }
+
+            //If it passed all of these tests, then the path is accessible!
+            return true;
         }
     }
 
@@ -157,11 +191,11 @@ public class Trip {
             }
             for (Station station : path) {
                 ret += station.line.name + ": " + station.name;
-                
+
                 if (needAccessible && station.isAccessible) {
                     ret += " - accessible";
                 }
-                
+
                 ret += "\n";
             }
             if (requiresTransfer) {
