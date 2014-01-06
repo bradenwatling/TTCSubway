@@ -2,7 +2,6 @@ package ttcsubway;
 
 import java.util.ArrayList;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
@@ -11,7 +10,7 @@ import org.w3c.dom.NodeList;
  */
 public class Station {
     
-    Line currentLine;
+    Line line;
     Station interchangeStation;
     String name;
     int ridership;
@@ -26,7 +25,7 @@ public class Station {
     String primaryElevator, secondaryElevator;*/
 
     public Station(Line currentLine, Element stationElement) {//, String name, int ridership, boolean isInterchange, boolean centrePlatform, String direction, boolean isAccessible, boolean requiresTransfer) {
-        this.currentLine = currentLine;
+        this.line = currentLine;
         this.interchangeStation = null;
         
         this.name = stationElement.getAttribute("name");
@@ -40,8 +39,15 @@ public class Station {
         NodeList entranceNodes = stationElement.getElementsByTagName("entrance");
         for (int i = 0; i < entranceNodes.getLength(); i++) {
             Element entranceElement = (Element) entranceNodes.item(i);
-            String name = entranceElement.getAttribute("name");
-            Entrance entrance = new Entrance(name, entranceElement);
+            String entranceName = entranceElement.getAttribute("name");
+            String platformDirection = entranceElement.getAttribute("platform");
+            
+            if (platformDirection.equals(direction) || platformDirection.equals("B")) {                
+                entrances.add(new Entrance(entranceName, true, entranceElement));
+            }
+            if (!platformDirection.equals(direction) || platformDirection.equals("B")) {
+                entrances.add(new Entrance(entranceName, false, entranceElement));
+            }
         }
     }
     

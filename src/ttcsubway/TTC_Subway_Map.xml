@@ -33,7 +33,7 @@
         </station>
         <station accessible="TRUE" centre="TRUE" direction="S" interchange="TRUE" name="St George" ridership="124020" transfer="FALSE">
             <!--
-            [7-(first digit)].[5-(second digit)]
+            7.5 - location
             -->
             <entrance name="Transfer to Bloor-Danforth" platform="B">
                 <elevator>1.1</elevator>
@@ -186,7 +186,7 @@
     exclude-result-prefixes="msxsl">
 
 <xsl:template match="station">
-    <station transfer="{@transfer}" secondaryStairs="{@secondaryStairs}" secondaryEscalator="{@secondaryEscalator}" secondaryElevator="{@secondaryElevator}" ridership="{@ridership}" primaryStairs="{@primaryStairs}" primaryEscalator="{@primaryEscalator}" primaryElevator="{@primaryElevator}" name="{@name}" interchange="{@interchange}" direction="{@direction}" centre="{@centre}" accessible="{@accessible}">
+    <station transfer="{@transfer}" ridership="{@ridership}" name="{@name}" interchange="{@interchange}" direction="{@direction}" centre="{@centre}" accessible="{@accessible}">
         <xsl:text>&#xa;        </xsl:text>
     </station>
 </xsl:template>

@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 public class Entrance {
 
     String name;
+    boolean primaryDirection;
 
     class PlatformElement {
 
@@ -27,12 +28,14 @@ public class Entrance {
             this(location, true);
         }
     }
+    
     ArrayList<PlatformElement> elevators = new ArrayList<>();
     ArrayList<PlatformElement> escalators = new ArrayList<>();
     ArrayList<PlatformElement> stairs = new ArrayList<>();
 
-    public Entrance(String name, Element entranceElement) {
+    public Entrance(String name, boolean primaryDirection, Element entranceElement) {
         this.name = name;
+        this.primaryDirection = primaryDirection;
 
         NodeList elevatorNodes = entranceElement.getElementsByTagName("elevator");
         NodeList escalatorNodes = entranceElement.getElementsByTagName("escalator");
@@ -41,10 +44,15 @@ public class Entrance {
         for (int i = 0; i < elevatorNodes.getLength(); i++) {
             Element elevatorElement = (Element) elevatorNodes.item(i);
             if (elevatorElement.getNodeType() == Node.ELEMENT_NODE) {
-                String position = elevatorElement.getTextContent().trim();
+                String positionString = elevatorElement.getTextContent().trim();
 
-                if (position != null) {
-                    PlatformElement elevator = new PlatformElement(Double.parseDouble(position));
+                if (positionString != null) {
+                    double position = Double.parseDouble(positionString);
+                    if (!primaryDirection) {
+                        //Find out the opposite car.door by subtracting from 7.5
+                        position = 7.5 - position;
+                    }
+                    PlatformElement elevator = new PlatformElement(position);
 
                     elevators.add(elevator);
                 }
@@ -55,10 +63,15 @@ public class Entrance {
             Element escalatorElement = (Element) escalatorNodes.item(i);
             if (escalatorElement.getNodeType() == Node.ELEMENT_NODE) {
                 boolean usable = escalatorElement.getAttribute("usable").equals("TRUE");
-                String position = escalatorElement.getTextContent().trim();
+                String positionString = escalatorElement.getTextContent().trim();
 
-                if (position != null) {
-                    PlatformElement escalator = new PlatformElement(Double.parseDouble(position), usable);
+                if (positionString != null) {
+                    double position = Double.parseDouble(positionString);
+                    if (!primaryDirection) {
+                        //Find out the opposite car.door by subtracting from 7.5
+                        position = 7.5 - position;
+                    }
+                    PlatformElement escalator = new PlatformElement(position, usable);
 
                     escalators.add(escalator);
                 }
@@ -68,10 +81,15 @@ public class Entrance {
         for (int i = 0; i < stairNodes.getLength(); i++) {
             Element stairElement = (Element) stairNodes.item(i);
             if (stairElement.getNodeType() == Node.ELEMENT_NODE) {
-                String position = stairElement.getTextContent().trim();
+                String positionString = stairElement.getTextContent().trim();
 
-                if (position != null) {
-                    PlatformElement stair = new PlatformElement(Double.parseDouble(position));
+                if (positionString != null) {
+                    double position = Double.parseDouble(positionString);
+                    if (!primaryDirection) {
+                        //Find out the opposite car.door by subtracting from 7.5
+                        position = 7.5 - position;
+                    }
+                    PlatformElement stair = new PlatformElement(position);
 
                     stairs.add(stair);
                 }
