@@ -24,21 +24,20 @@ public class Init {
             
             document.getDocumentElement().normalize();
             
-            NodeList inputLines = document.getElementsByTagName("line");
+            NodeList lineNodes = document.getElementsByTagName("line");
             
-            for (int i = 0; i < inputLines.getLength(); i++) {
-                Node currentLine = inputLines.item(i);
-                if (currentLine.getNodeType() == Node.ELEMENT_NODE) {
-                    Element currentLineElement = (Element) currentLine;
-                    Line curLine = new Line(currentLineElement.getAttribute("name"));
+            for (int i = 0; i < lineNodes.getLength(); i++) {
+                Node lineNode = lineNodes.item(i);
+                if (lineNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element lineElement = (Element) lineNode;
+                    Line curLine = new Line(lineElement.getAttribute("name"));
                     
                     //Get the stations
-                    NodeList stations = currentLineElement.getElementsByTagName("station");
+                    NodeList stationNodes = lineElement.getElementsByTagName("station");
                     
-                    for (int j = 0; j < stations.getLength(); j++) {
-                        Node station = stations.item(j);
-                        if (station.getNodeType() == Node.ELEMENT_NODE) {
-                            Element stationElement = (Element) station;
+                    for (int j = 0; j < stationNodes.getLength(); j++) {
+                        Element stationElement = (Element) stationNodes.item(j);
+                        if (stationElement.getNodeType() == Node.ELEMENT_NODE) {
                             Station newStation = new Station(curLine, stationElement);
                             curLine.addStation(newStation);
                         }

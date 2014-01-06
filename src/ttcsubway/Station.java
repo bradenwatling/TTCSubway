@@ -1,6 +1,9 @@
 package ttcsubway;
 
+import java.util.ArrayList;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  *
@@ -16,9 +19,11 @@ public class Station {
     String direction;
     boolean isAccessible, requiresTransfer;
     
-    String primaryStairs, secondaryStairs;
+    ArrayList<Entrance> entrances = new ArrayList<>();
+    
+    /*String primaryStairs, secondaryStairs;
     String primaryEscalator, secondaryEscalator;
-    String primaryElevator, secondaryElevator;
+    String primaryElevator, secondaryElevator;*/
 
     public Station(Line currentLine, Element stationElement) {//, String name, int ridership, boolean isInterchange, boolean centrePlatform, String direction, boolean isAccessible, boolean requiresTransfer) {
         this.currentLine = currentLine;
@@ -31,6 +36,13 @@ public class Station {
         this.direction = stationElement.getAttribute("direction");
         this.isAccessible = stationElement.getAttribute("accessible").equals("TRUE");
         this.requiresTransfer = stationElement.getAttribute("transfer").equals("TRUE");
+        
+        NodeList entranceNodes = stationElement.getElementsByTagName("entrance");
+        for (int i = 0; i < entranceNodes.getLength(); i++) {
+            Element entranceElement = (Element) entranceNodes.item(i);
+            String name = entranceElement.getAttribute("name");
+            Entrance entrance = new Entrance(name, entranceElement);
+        }
     }
     
     @Override

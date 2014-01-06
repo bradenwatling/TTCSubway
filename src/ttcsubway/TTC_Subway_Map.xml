@@ -50,7 +50,7 @@
                 <stairs>4.1</stairs>
                 <stairs>2.4</stairs>
             </entrance>
-            <entrance name="St. George St." platform="B">
+            <entrance name="St George St." platform="B">
                 <escalator usable="TRUE">6.3</escalator>
                 <stairs>6.3</stairs>
             </entrance>
@@ -101,67 +101,67 @@
         </station>
     </line>
     <line name="Bloor-Danforth">
-        <station accessible="TRUE" centre="TRUE" direction="E" interchange="FALSE" name="Kipling" ridership="52930" transfer="">
+        <station accessible="TRUE" centre="TRUE" direction="E" interchange="FALSE" name="Kipling" ridership="52930" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Islington" ridership="40230" transfer="">
+        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Islington" ridership="40230" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Royal York" ridership="20550" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Royal York" ridership="20550" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Old Mill" ridership="5790" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Old Mill" ridership="5790" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Jane" ridership="18150" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Jane" ridership="18150" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Runnymede" ridership="19300" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Runnymede" ridership="19300" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="High Park" ridership="12290" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="High Park" ridership="12290" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Keele" ridership="15390" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Keele" ridership="15390" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Dundas West" ridership="27990" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Dundas West" ridership="27990" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Lansdowne" ridership="16510" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Lansdowne" ridership="16510" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Dufferin" ridership="28300" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Dufferin" ridership="28300" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Ossington" ridership="24330" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Ossington" ridership="24330" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Christie" ridership="12400" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Christie" ridership="12400" transfer="TRUE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Bathurst" ridership="33900" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Bathurst" ridership="33900" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="TRUE" name="Spadina" ridership="41140" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="TRUE" name="Spadina" ridership="41140" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="St George" ridership="129440" transfer="">
+        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="St George" ridership="129440" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Bay" ridership="33720" transfer="">
+        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Bay" ridership="33720" transfer="TRUE">
         </station>
-        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="Bloor-Yonge" ridership="189970" transfer="">
+        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="Bloor-Yonge" ridership="189970" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Sherbourne" ridership="25350" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Sherbourne" ridership="25350" transfer="TRUE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Castle Frank" ridership="7950" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Castle Frank" ridership="7950" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Broadview" ridership="28860" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Broadview" ridership="28860" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Chester" ridership="6760" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Chester" ridership="6760" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Pape" ridership="25100" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Pape" ridership="25100" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Donlands" ridership="10760" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Donlands" ridership="10760" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Greenwood" ridership="11800" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Greenwood" ridership="11800" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Coxwell" ridership="16730" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Coxwell" ridership="16730" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Woodbine" ridership="13820" transfer="">
+        <station accessible="FALSE" centre="FALSE" direction="E" interchange="FALSE" name="Woodbine" ridership="13820" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Main Street" ridership="25390" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Main Street" ridership="25390" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Victoria Park" ridership="27510" transfer="">
+        <station accessible="TRUE" centre="FALSE" direction="E" interchange="FALSE" name="Victoria Park" ridership="27510" transfer="FALSE">
         </station>
-        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Warden" ridership="26220" transfer="">
+        <station accessible="FALSE" centre="TRUE" direction="E" interchange="FALSE" name="Warden" ridership="26220" transfer="FALSE">
         </station>
-        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="Kennedy" ridership="71050" transfer="">
+        <station accessible="TRUE" centre="TRUE" direction="E" interchange="TRUE" name="Kennedy" ridership="71050" transfer="TRUE">
         </station>
     </line>
     <line name="Scarborough RT">
